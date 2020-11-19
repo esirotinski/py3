@@ -13,12 +13,11 @@ __author_email__ = 'sea@gmx.es'
 __copyright__ = 'Copyright (c) 2020 Eugene Sirotinski'
 __license__ = 'MIT'
 
-
 import sys, ipaddress
 from typing import Union
 
 def check_argument(argv: str) -> None:
-    if argv.isdigit():
+    if argv.isdigit() and argv.isdecimal():
         print_address(int(argv))        
     else:
         print_address(argv)
