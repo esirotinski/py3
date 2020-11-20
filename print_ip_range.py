@@ -16,7 +16,7 @@ import sys
 from ipaddress import ip_network, IPv4Address, IPv6Address
 from typing import Union, Tuple, Any
 
-Network = Tuple[Union[int, IPv4Address, IPv6Address], int]
+Network = Tuple[Union[IPv4Address, IPv6Address], Union[str, int]]
 
 def _check_argument(argv: Any) -> None:
     if type(argv) is tuple: # ipv6=(42540766411282592856903984951653826560, 126)
@@ -24,7 +24,7 @@ def _check_argument(argv: Any) -> None:
     elif type(argv) is int: # 32/128-bits int
         print_address(argv)
     elif type(argv) is str: # 32/128-bits int | str IPv4/IPv6 w/|w/o netmask
-        if argv.isdigit() and argv.isdecimal(): # 32/128-bits int
+        if argv.isdigit() and argv.isdecimal():
             print_address(int(argv))
         else:
             print_address(argv)
