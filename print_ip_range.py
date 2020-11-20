@@ -4,7 +4,6 @@ Prints IP addresses in a network range:
 $ python3 print_ip_range.py 192.168.0.1/24
 $ python3 print_ip_range.py 2001:db00::0/126
 
-If integer provided, will display address only, not a range.
 For more details: https://docs.python.org/3/library/ipaddress.html
 """
 
@@ -13,18 +12,28 @@ __author_email__ = 'sea@gmx.es'
 __copyright__ = 'Copyright (c) 2020 Eugene Sirotinski'
 __license__ = 'MIT'
 
-import sys, ipaddress
-from typing import Union
+import sys
+from ipaddress import ip_network, IPv4Address, IPv6Address
+from typing import Union, Tuple, Any
 
-def check_argument(argv: str) -> None:
-    if argv.isdigit() and argv.isdecimal():
-        print_address(int(argv))        
-    else:
+Network = Tuple[Union[int, IPv4Address, IPv6Address], int]
+
+def _check_argument(argv: Any) -> None:
+    if type(argv) is tuple: # ipv6=(42540766411282592856903984951653826560, 126)
+        print_address(argv) # ipv4=(23556556, 28)
+    elif type(argv) is int: # 32/128-bits int
         print_address(argv)
+    elif type(argv) is str: # 32/128-bits int | str IPv4/IPv6 w/|w/o netmask
+        if argv.isdigit() and argv.isdecimal(): # 32/128-bits int
+            print_address(int(argv))
+        else:
+            print_address(argv)
+    else:
+        print(f'What was that?\n {type(argv) = }\n {argv = }\n')
 
-def print_address(range: Union[str, int]) -> None:
+def print_address(range: Union[str, int, Network]) -> None:
     try:
-        network = ipaddress.ip_network(range, strict=False)
+        network = ip_network(range, strict=False)
         for address in network.hosts():
             print(address)
     except Exception as e:
@@ -36,4 +45,4 @@ if __name__ == '__main__':
         print('IPv4/IPv6/integer range/address needed!')
         sys.exit(2)
     else:
-        check_argument(sys.argv[1])
+        _check_argument(sys.argv[1])
