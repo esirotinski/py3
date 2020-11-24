@@ -57,6 +57,7 @@ if __name__ == '__main__':
         print('Please edit User-Agent/Contact details before running.')
         print('Country code missing.')
         print('Available codes: https://public-dns.info/#countries')
+        sys.exit(2)
     else:
         data = request_json(sys.argv[1])
         if data:
