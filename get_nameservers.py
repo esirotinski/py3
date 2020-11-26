@@ -21,8 +21,9 @@ JsonList = List[Dict]
 def request_json(country_code: str) -> JsonList:
     data = []
     uri = f'https://public-dns.info/nameserver/{country_code}.json'
-    headers = { 'User-Agent' : 'Bot Frumos [Contact: bot@gmx.es]',
-        'Connection' : 'Close' }
+    headers = {
+        'User-Agent' : '<some_string_here> [Contact: example@example.org]'
+        }
     try:
         response = requests.get(uri, headers=headers)
         response.raise_for_status()
