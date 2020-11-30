@@ -33,7 +33,7 @@ def request_json(country_code: str) -> JsonList:
         data = response.json()
     return data
 
-def parse_json(data: JsonList) -> None:
+def print_nameservers(data: JsonList) -> None:
     if data == []:
         sys.exit(f'parse_json {data = }')
 
@@ -42,14 +42,8 @@ def parse_json(data: JsonList) -> None:
         as_org = elem['as_org']
         as_nr = elem['as_number']
         country_id = elem['country_id']
-        print_nameservers(nameserver=ns, as_org=as_org,
-                            as_nr=as_nr, country_id=country_id)
-
-def print_nameservers(*, nameserver: str,
-        as_org: str, as_nr: str, country_id: str) -> None:
-
-    print(f'{nameserver }', ' ' * (22 - len(nameserver)),
-            f'#{country_id} AS{as_nr} {as_org}')
+        print(f'nameserver {ns}', ' ' * (22 - len(ns)),
+                f'#{country_id} AS{as_nr} {as_org}')
 
 
 if __name__ == '__main__':
@@ -62,6 +56,6 @@ if __name__ == '__main__':
     else:
         data = request_json(sys.argv[1])
         if data:
-            parse_json(data)
+            print_nameservers(data)
         else:
             print(f'main_json {data = }')
