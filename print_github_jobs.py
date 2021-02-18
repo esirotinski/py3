@@ -22,7 +22,7 @@ def printJobs(key: str = '') -> None:
     url = 'https://jobs.github.com/'
 
     session = requests.Session()
-    adapter = HTTPAdapter(max_retries=3)
+    adapter = requests.HTTPAdapter(max_retries=2)
     session.mount(url, adapter)
 
     url += 'positions.json'
