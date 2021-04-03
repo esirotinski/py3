@@ -18,7 +18,7 @@ from typing import Union, Tuple, Any
 
 Network = Tuple[Union[IPv4Address, IPv6Address], Union[str, int]]
 
-def _check_argument(argv: Any) -> None:
+def check_argument(argv: Any) -> None:
     if type(argv) is tuple: # ipv6=(42540766411282592856903984951653826560, 126)
         print_address(argv) # ipv4=(23556556, 28)
     elif type(argv) is int: # 32/128-bits int
@@ -45,4 +45,5 @@ if __name__ == '__main__':
         print('IPv4/IPv6/integer range/address needed!')
         sys.exit(2)
     else:
-        _check_argument(sys.argv[1])
+        check_argument(sys.argv[1])
+
