@@ -10,7 +10,7 @@ This script was not thoroughly tested.
 
 __author__ = 'Eugene Sirotinski'
 __author_email__ = 'sea@gmx.es'
-__copyright__ = 'Copyright (c) 2020 Eugene Sirotinski'
+__copyright__ = 'Copyright (c) 2021 Eugene Sirotinski'
 __license__ = 'MIT'
 
 import json, requests, sys
@@ -42,8 +42,7 @@ def print_nameservers(data: JsonList) -> None:
         as_org = elem['as_org']
         as_nr = elem['as_number']
         country_id = elem['country_id']
-        print(f'nameserver {ns}', ' ' * (22 - len(ns)),
-                f'#{country_id} AS{as_nr} {as_org}')
+        print(f'nameserver {ns:22s}#{country_id} AS{as_nr} {as_org}')
 
 
 if __name__ == '__main__':
