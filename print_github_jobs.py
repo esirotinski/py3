@@ -8,7 +8,7 @@ Details: https://jobs.github.com/api
 
 __author__ = 'Eugene Sirotinski'
 __author_email__ = 'sea@gmx.es'
-__copyright__ = 'Copyright (c) Eugene Sirotinski'
+__copyright__ = 'Copyright (c) Today Eugene Sirotinski'
 __license__ = 'MIT'
 
 import json, requests, sys
