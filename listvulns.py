@@ -14,7 +14,7 @@ Enjoy!
 
 __author__ = 'Eugene Sirotinski'
 __author_email__ = 'esirotinski@gmail.com'
-__copyright__ = 'Copyright (c) Eugene Sirotinski'
+__copyright__ = 'Copyright (c) Today Eugene Sirotinski'
 __license__ = 'MIT'
 
 import platform
