@@ -9,7 +9,7 @@ For more details: https://docs.python.org/3/library/ipaddress.html
 
 __author__ = 'Eugene Sirotinski'
 __author_email__ = 'sea@gmx.es'
-__copyright__ = 'Copyright (c) 2020 Eugene Sirotinski'
+__copyright__ = 'Copyright (c) Today Eugene Sirotinski'
 __license__ = 'MIT'
 
 import sys
