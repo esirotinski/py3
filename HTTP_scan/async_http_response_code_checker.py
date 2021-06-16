@@ -21,7 +21,7 @@ async def get_headers(ip_addresses):
     async with aiohttp.ClientSession(timeout=timeout, headers=headers) as session:
         tasks = []
         for ip in ip_addresses:
-            task = asyncio.ensure_future(get_header(session, ip.strip()))
+            task = asyncio.create_task(get_header(session, ip.strip()))
             tasks.append(task)
         await asyncio.gather(*tasks, return_exceptions=True)
 
